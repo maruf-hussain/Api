@@ -6,9 +6,11 @@ const shop = {
         phone: 45545, 
     },
     product:['phone','laptop','mouse','keyboard'],
-    revenew:5020,
+    revenew:545,
     isOpen:true,
 };
 console.log(shop);
 const shopJson = JSON.stringify(shop);
-console.log(shopJson);
+// console.log(shopJson);
+const jonPars = JSON.parse(shopJson);
+console.log(jonPars);
