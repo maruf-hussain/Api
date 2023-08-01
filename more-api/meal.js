@@ -18,7 +18,10 @@ const displayMeals = meals =>{
         <div class="card-body">
           <h1 class="card-title"> ${meal.strMeal}</h1>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
+          <button onclick="loadMealDetails(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealDetails">
+       Details
+        </button
+          </div>
       </div>
         
         `;
@@ -34,4 +37,22 @@ loadMeals(searchText);
 
 };
 
-loadMeals('fish');
+const loadMealDetails = idMeal =>{
+const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i${idMeal}`;
+
+fetch(url)
+.then(res => res.json())
+.then(data => displayMealsDetalis(data.meals[0]))
+};
+
+const displayMealsDetalis = meal =>{
+  document.getElementById('mealDetailsLabel').innerText = meal.strMeal;
+  const mealBody = document.getElementById('mealDetailsBody');
+  mealBody.innerHTML =`
+  <img src="${meal.strMealThumb}"
+  <h2> ${meal.strMeal}</h2>
+  `
+
+}
+
+loadMeals('rice');
