@@ -28,13 +28,18 @@
             <button class="btn btn-danger" onclick="searchMeals()">Search</button>
         </div>
     </section>
-
+    <section>
+      <div id="mealsNoFound" class="mt-5 d-none">
+        <h2 class="text-danger">No Meal Found...Please Search Write Keyword</h2>
+      </div>
+    </section>
 
     <section>
         <div id="display-meals" class="row row-cols-1 row-cols-md-3 g-4">
            
           </div>
     </section>
+   
 
 <section>
     <div class="modal fade" id="mealDetails" tabindex="-1" aria-labelledby="mealDetailsLabel" aria-hidden="true">
@@ -55,7 +60,7 @@
         </div>
       </div>
 </section>
-
+<!-- <button onclick="showAllMeals()">show all</button> -->
 
 </main>
 

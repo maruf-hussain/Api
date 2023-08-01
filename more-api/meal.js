@@ -5,10 +5,25 @@ const loadMeals = (searchText) =>{
     .then(data => displayMeals(data.meals))
 }
 
+
+
 const displayMeals = meals =>{
     console.log(meals);
     const mealsContainer = document.getElementById('display-meals');
     mealsContainer.innerHTML = '';
+    // meals = meals.slice(0, 3);
+
+     // ...No Meals Found Messege..............
+    //  const noMeals = document.getElementById('mealsNoFound');
+    //  if(meals === 0){
+    //    noMeals.classList.remove('d-none');
+    //  }
+
+    //  else{
+    //   noMeals.classList.add('d-none');
+    //  }
+ 
+    
     meals.forEach(meal =>{
         const mealDiv = document.createElement('div');
         mealDiv.classList.add('col')
@@ -23,8 +38,9 @@ const displayMeals = meals =>{
         </button
           </div>
       </div>
-        
+   
         `;
+       
         mealsContainer.appendChild(mealDiv);
     })
   
@@ -67,4 +83,4 @@ const displayMealsDetalis = meal =>{
 
 }
 
-loadMeals('rice');
+loadMeals('fish');
