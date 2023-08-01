@@ -16,7 +16,7 @@ const displayCoutries = countries => {
         <img src="${country.flags.png}" alt="">
         <h1>Name: ${country.name.common}</h1>
         <h3>Capital: ${country.capital ? country.capital[0] : 'No Capital'}</h3>
-       <button onClick="loadCountryDetails('$(country.cca3)')">Details</button>
+       <button onClick="loadCountryDetails('$(country.cca2)')">Details</button>
     
         `;
         countriesContainer.appendChild(countriesDiv);
@@ -24,25 +24,24 @@ const displayCoutries = countries => {
    
 };
 
-const loadCountryDetails = (code) =>{
+const loadCountryDetails = code =>{
 const url = `https://restcountries.com/v3.1/alpha/${code}`
 fetch(url)
 .then(res => res.json())
-.then(data => displayCountryDetails(data[0]))
+.then(data => displayDetails(data[0]));
 
 };
 
-const displayCountryDetails = country =>{
+const displayDetails = country =>{
     const countryDetails = document.getElementById('country-detail');
-   countryDetails.innerHTML =`
-   <h1>${country.name.common}</h1>
-   <img  src="${country.flags.png}" alt="">
+   countryDetails.innerHTML = `
+  
+   <h1>Name: ${country.name.common}</h1>
+   
+
    `;
  
 }
-
-
-
 
 loadCountries()
 
