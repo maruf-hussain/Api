@@ -18,7 +18,7 @@ const displayMeals = meals =>{
         <div class="card-body">
           <h1 class="card-title"> ${meal.strMeal}</h1>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <button onclick="loadMealDetails(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealDetails">
+          <button onclick="loadMealDetails2(${meal.idMeal})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mealDetails">
        Details
         </button
           </div>
@@ -37,20 +37,32 @@ loadMeals(searchText);
 
 };
 
-const loadMealDetails = idMeal =>{
-const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i${idMeal}`;
+// const loadMealDetails = idMeal =>{
+// const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
 
-fetch(url)
-.then(res => res.json())
-.then(data => displayMealsDetalis(data.meals[0]))
-};
+// fetch(url)
+// .then(res => res.json())
+// .then(data => displayMealsDetalis(data.meals[0]))
+// };
+
+const loadMealDetails2 = async(idMeal) =>{
+  const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+ try{
+  const res = await fetch(url);
+  const data = await res.json();
+  displayMealsDetalis(data.meals[0]);
+ }
+ catch(error){
+console.log(error)
+ }
+}
 
 const displayMealsDetalis = meal =>{
   document.getElementById('mealDetailsLabel').innerText = meal.strMeal;
   const mealBody = document.getElementById('mealDetailsBody');
   mealBody.innerHTML =`
-  <img src="${meal.strMealThumb}"
-  <h2> ${meal.strMeal}</h2>
+  <img class="img-fluid" src="${meal.strMealThumb}"
+ 
   `
 
 }
